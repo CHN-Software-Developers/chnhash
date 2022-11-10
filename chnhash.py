@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import sys
 from filehash import FileHash
 
@@ -8,9 +9,13 @@ def compareHash(algorithm, file, receivedHash):
         print("Using: SHA-512")
         sha512hasher = FileHash('sha512')
         sha512Hash = sha512hasher.hash_file(file)
+
+        sha512Hash = sha512Hash.replace(" ", "")
+        receivedHashValue = f.read().replace(" ", "")
+
         print("SHA-512: " + sha512Hash , file)
 
-        if sha512Hash == f.read():
+        if sha512Hash == receivedHashValue:
             print("FILE " + file + ": OK")
         else:
             print("FILE " + file + ": INVALID")
