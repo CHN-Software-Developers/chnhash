@@ -3,7 +3,7 @@ import sys
 import compareHash
 import appUpdater
 
-version = "v0.0.0"
+version = "v0.0.1"
 
 print("\nchnhash -v0.0.1 - CHN Software Developers(https://chnsoftwaredevelopers.com)\n")
 
