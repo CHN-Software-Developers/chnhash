@@ -2,21 +2,31 @@ import sys
 from filehash import FileHash
 
 def compareHash(algorithm, file, receivedHash):
-    f = open(receivedHash, "r")
+    fileHashValue = ""
+    receivedHashValue = ""
+
+    try: 
+        f = open(receivedHash, "r")
+        receivedHashValue = f.read().replace(" ", "")
+        f.close()
+    except: 
+        receivedHashValue = receivedHash.replace(" ", "")
 
     if algorithm == "sha512":
         print("Using: SHA-512")
         sha512hasher = FileHash('sha512')
-        sha512Hash = sha512hasher.hash_file(file)
+        fileHashValue = sha512hasher.hash_file(file)
 
-        sha512Hash = sha512Hash.replace(" ", "")
-        receivedHashValue = f.read().replace(" ", "")
+        fileHashValue = fileHashValue.replace(" ", "")
+        
+        
+        print("SHA-512: " + fileHashValue , file)
 
-        print("SHA-512: " + sha512Hash , file)
 
-        if sha512Hash == receivedHashValue:
-            print("FILE " + file + ": OK")
-        else:
-            print("FILE " + file + ": INVALID")
 
-    f.close()
+    if fileHashValue == "" and receivedHashValue == "":
+        print("This hash function is not supported right now. Please try to use any other supported hash functions.")
+    elif fileHashValue == receivedHashValue:
+        print("FILE " + file + ": OK")
+    else:
+        print("FILE " + file + ": INVALID")
