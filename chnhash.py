@@ -1,3 +1,20 @@
+"""
+chnhash provides you with the functionalities of generating and comparing hash values.
+Copyright (C) 2022-2023 Himashana Suraweera (Email : Himashana@chnsoftwaredevelopers.com)
+
+This file is part of chnhash.
+
+chnhash is free software: you can redistribute it and/or modify it under the terms of the GNU General
+Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.
+
+chnhash is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even
+the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with chnhash. If not, see
+<https://www.gnu.org/licenses/>.
+
+"""
 #!/usr/bin/python3
 import sys
 import compareHash
@@ -6,7 +23,9 @@ import appUpdater
 
 version = "v0.0.2"
 
-print("\nchnhash -v0.0.2 - CHN Software Developers(https://chnsoftwaredevelopers.com)\n")
+print("\nchnhash v0.0.2")
+print("Copyright (C) 2022-2023 Himashana Suraweera (https://chnsoftwaredevelopers.com)")
+print("Licensed under the terms of the GNU GPLv3\n")
 
 updateDetails = appUpdater.isUpdateAvailable(version)
 
