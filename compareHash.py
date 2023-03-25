@@ -30,13 +30,30 @@ def compareHash(algorithm, file, receivedHash):
     except: 
         receivedHashValue = receivedHash.replace(" ", "")
 
-    if algorithm == "sha512":
-        print("Using: SHA-512")
-        sha512hasher = FileHash('sha512')
-        fileHashValue = sha512hasher.hash_file(file)
+    if algorithm == "sha1":
+        print("Using: SHA-1")
+        hasher = FileHash('sha1')
 
-        fileHashValue = fileHashValue.replace(" ", "")
+        fileHashValue = hasher.hash_file(file)
+        fileHashValue = fileHashValue.replace(" ", "") 
         
+        print("SHA-1: " + fileHashValue , file)
+
+    elif algorithm == "sha256":
+        print("Using: SHA-256")
+        hasher = FileHash('sha256')
+
+        fileHashValue = hasher.hash_file(file)
+        fileHashValue = fileHashValue.replace(" ", "") 
+        
+        print("SHA-256: " + fileHashValue , file)
+
+    elif algorithm == "sha512":
+        print("Using: SHA-512")
+        hasher = FileHash('sha512')
+
+        fileHashValue = hasher.hash_file(file)
+        fileHashValue = fileHashValue.replace(" ", "") 
         
         print("SHA-512: " + fileHashValue , file)
 

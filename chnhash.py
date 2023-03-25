@@ -27,6 +27,8 @@ print("\nchnhash v0.0.2")
 print("Copyright (C) 2022-2023 Himashana Suraweera (https://chnsoftwaredevelopers.com)")
 print("Licensed under the terms of the GNU GPLv3\n")
 
+print("Loading...", end="\r")
+
 updateDetails = appUpdater.isUpdateAvailable(version)
 
 if(updateDetails[0] == True):
@@ -51,7 +53,7 @@ try:
     except: receivedHash = "NONE"
 
     if task == "-c":
-        print("process - is hash(" + file + ") == readFile(" + receivedHash + ") ?")
+        print("process - is hash(" + file + ") == receivedHash(" + receivedHash + ") ?")
         compareHash.compareHash(algorithm, file, receivedHash)
     elif task == "-g":
         print("process - hash(" + file + ")")
