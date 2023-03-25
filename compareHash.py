@@ -19,10 +19,13 @@ You should have received a copy of the GNU General Public License along with chn
 import sys
 from filehash import FileHash
 
+# This function receives the hashing algorithm, file and the received hash values as input parameters,
+# and returns a list that contains the usingAlgorithm, fileHashValue, receivedHashValue, validity.
 def compareHash(algorithm, file, receivedHash):
     fileHashValue = ""
     receivedHashValue = ""
-
+    usingAlgorithm = ""
+    
     try: 
         f = open(receivedHash, "r")
         receivedHashValue = f.read().replace(" ", "")
@@ -30,21 +33,36 @@ def compareHash(algorithm, file, receivedHash):
     except: 
         receivedHashValue = receivedHash.replace(" ", "")
 
-    if algorithm == "sha512":
-        print("Using: SHA-512")
-        sha512hasher = FileHash('sha512')
-        fileHashValue = sha512hasher.hash_file(file)
+    if algorithm == "sha1":
+        usingAlgorithm = "SHA-1"
+        
+        hasher = FileHash('sha1')
 
+        fileHashValue = hasher.hash_file(file)
         fileHashValue = fileHashValue.replace(" ", "")
+
+    elif algorithm == "sha256":
+        usingAlgorithm = "SHA-256"
         
-        
-        print("SHA-512: " + fileHashValue , file)
+        hasher = FileHash('sha256')
+
+        fileHashValue = hasher.hash_file(file)
+        fileHashValue = fileHashValue.replace(" ", "")
+
+    elif algorithm == "sha512":
+        usingAlgorithm = "SHA-512"
+
+        hasher = FileHash('sha512')
+
+        fileHashValue = hasher.hash_file(file)
+        fileHashValue = fileHashValue.replace(" ", "")
 
 
-
-    if fileHashValue == "" and receivedHashValue == "":
-        print("This hash function is not supported right now. Please try to use any other supported hash functions.")
+    if fileHashValue == "":
+        validity = "ERROR"
     elif fileHashValue == receivedHashValue:
-        print("FILE " + file + ": OK")
+        validity = "OK"
     else:
-        print("FILE " + file + ": INVALID")
+        validity = "INVALID"
+
+    return [usingAlgorithm, fileHashValue, receivedHashValue, validity]

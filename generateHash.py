@@ -20,12 +20,35 @@ import sys
 from filehash import FileHash
 
 def generateHash(algorithm, file):
-    if algorithm == "sha512":
+    if algorithm == "sha1":
+        print("Using: SHA-1")
+
+        hasher = FileHash('sha1')
+
+        fileHashValue = hasher.hash_file(file)
+        fileHashValue = fileHashValue.replace(" ", "")
+
+        print("SHA-1: " + fileHashValue , file)
+
+    elif algorithm == "sha256":
+        print("Using: SHA-256")
+
+        hasher = FileHash('sha256')
+
+        fileHashValue = hasher.hash_file(file)
+        fileHashValue = fileHashValue.replace(" ", "")
+
+        print("SHA-256: " + fileHashValue , file)
+
+    elif algorithm == "sha512":
         print("Using: SHA-512")
-        sha512hasher = FileHash('sha512')
-        sha512Hash = sha512hasher.hash_file(file)
 
-        sha512Hash = sha512Hash.replace(" ", "")
+        hasher = FileHash('sha512')
 
-        print("SHA-512: " + sha512Hash , file)
+        fileHashValue = hasher.hash_file(file)
+        fileHashValue = fileHashValue.replace(" ", "")
+
+        print("SHA-512: " + fileHashValue , file)
+    else:
+        print("Sorry, an error occurred, or the algorithm is not supported with this tool. Please try to use a supported algorithm.")
     
