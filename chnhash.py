@@ -46,7 +46,14 @@ elif(updateDetails[0] == "ERROR"): # If an error occurred while checking for upd
     print("-" * 60)
     print("Unable to check for updates. Please try again.")
     print("-" * 60 + "\n")
-    
+
+def showUsage():
+    print("\nusage: chnhash.py <TASK> <ALGORITHM> <FILE> <RECEIVED HASH VALUE/FILE>")
+    print("\nCompare the hash values:")
+    print("     chnhash.py -c <ALGORITHM> <FILE> <RECEIVED HASH VALUE/FILE>")
+    print("\nGenerate a new hash value:")
+    print("     chnhash.py -g <ALGORITHM> <FILE>")
+
 try:
     # Getting the command line arguments as the inputs.
     task = sys.argv[1]
@@ -78,4 +85,4 @@ try:
 
 except: # If any exception occured,
     print("An unexpected error occurred!")
-    print("usage: chnhash.py <TASK> <ALGORITHM> <FILE> <RECEIVED HASH>")
+    showUsage()
