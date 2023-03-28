@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 """
 chnhash provides you with the functionalities of generating and comparing hash values.
 Copyright (C) 2022-2023 Himashana Suraweera (Email : Himashana@chnsoftwaredevelopers.com)
@@ -15,7 +17,7 @@ You should have received a copy of the GNU General Public License along with chn
 <https://www.gnu.org/licenses/>.
 
 """
-#!/usr/bin/python3
+
 import sys
 import compareHash
 import generateHash

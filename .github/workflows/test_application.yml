@@ -28,7 +28,7 @@ jobs:
       run: |
         mkdir Testing_env
         cp test_files/* Testing_env
-        cp test.py Testing_env
+        cp Testing/test.py Testing_env
         cp compareHash.py Testing_env
         cp generateHash.py Testing_env
         cd Testing_env
