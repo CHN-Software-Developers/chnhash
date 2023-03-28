@@ -26,4 +26,6 @@ jobs:
         pip install prettytable
     - name: Testing application
       run: |
+        ls
+        cd test_files
         python test.py
