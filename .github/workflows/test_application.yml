@@ -22,4 +22,4 @@ jobs:
         python-version: "3.10"
     - name: Testing application
       run: |
-        test.py
+        python test.py
