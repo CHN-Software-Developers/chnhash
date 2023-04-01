@@ -26,6 +26,9 @@ def compareHash(algorithm, file, receivedHash):
     receivedHashValue = ""
     usingAlgorithm = ""
     
+    # Try to open the text file that contains the received hash value and if in any case of failure to 
+    # open the file, read the text value in the receivedHashValue variable (hash value or this is also 
+    # can be the filename. but, in that case, the output will be an invalid one).
     try: 
         f = open(receivedHash, "r")
         receivedHashValue = f.read().replace(" ", "")
@@ -33,31 +36,41 @@ def compareHash(algorithm, file, receivedHash):
     except: 
         receivedHashValue = receivedHash.replace(" ", "")
 
-    if algorithm == "sha1":
+
+    if algorithm == "sha1": # If the requested algorithm is SHA-1,
         usingAlgorithm = "SHA-1"
         
+        # Using sha1.
         hasher = FileHash('sha1')
 
+        # Hashing the file to be compared with the received hash value.
         fileHashValue = hasher.hash_file(file)
+        # Replacing the whitespaces.
         fileHashValue = fileHashValue.replace(" ", "")
 
-    elif algorithm == "sha256":
+    elif algorithm == "sha256": # If the requested algorithm is SHA-256,
         usingAlgorithm = "SHA-256"
         
+        # Using sha256.
         hasher = FileHash('sha256')
 
+        # Hashing the file to be compared with the received hash value.
         fileHashValue = hasher.hash_file(file)
+        # Replacing the whitespaces.
         fileHashValue = fileHashValue.replace(" ", "")
 
-    elif algorithm == "sha512":
+    elif algorithm == "sha512": # If the requested algorithm is SHA-512,
         usingAlgorithm = "SHA-512"
 
+        # Using sha512.
         hasher = FileHash('sha512')
 
+        # Hashing the file to be compared with the received hash value.
         fileHashValue = hasher.hash_file(file)
+        # Replacing the whitespaces.
         fileHashValue = fileHashValue.replace(" ", "")
 
-
+    # Comparing the hash values.
     if fileHashValue == "":
         validity = "ERROR"
     elif fileHashValue == receivedHashValue:
@@ -65,4 +78,5 @@ def compareHash(algorithm, file, receivedHash):
     else:
         validity = "INVALID"
 
+    # Returning the usingAlgorithm, fileHashValue, receivedHashValue and the validity from the function as a list.
     return [usingAlgorithm, fileHashValue, receivedHashValue, validity]
