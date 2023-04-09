@@ -1,12 +1,17 @@
 # chnhash
-<div style="background-color:#ffcc00; color:black;padding:5px;">
-    This project is still in development mode and will be available to the public soon...
-</div>
 
-## Installation:
+## Installation (Linux):
 1. Download and extract the suitable zip file. You can use wget and unzip commands in Linux.
 2. Run the setup.sh file with administrative privileges to perform the installation.
 > sudo sh setup.sh
+
+## Installation (Windows):
+1. Download and extract the suitable zip file.
+2. Start the command prompt with the administrative privileges (Run as administrator) and go to the downloaded chnhash folder through the command prompt and execute the setup.bat file.
+
+>cd [downloaded chnhash folder]
+
+>setup.bat
 
 ## Usage:
 > chnhash.py \<TASK> \<ALGORITHM> \<FILE> \<RECEIVED HASH VALUE/FILE>
@@ -17,5 +22,5 @@ Compare the hash values:
 Generate a new hash value:
 > chnhash.py -g \<ALGORITHM> \<FILE>
 
-
-chnhash.py -c sha512 test_files\File.txt test_files\received_hash.txt
+Example:
+>chnhash.py -c sha512 test_files\File.txt test_files\received_hash.txt
