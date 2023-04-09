@@ -14,6 +14,10 @@
 >setup.bat
 
 ## Usage:
+linux:
+> /usr/bin/chnhash/chnhash.py \<TASK> \<ALGORITHM> \<FILE> \<RECEIVED HASH VALUE/FILE>
+
+Windows:
 > chnhash.py \<TASK> \<ALGORITHM> \<FILE> \<RECEIVED HASH VALUE/FILE>
 
 Compare the hash values:
