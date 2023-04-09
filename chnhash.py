@@ -23,7 +23,7 @@ import compareHash
 import generateHash
 import appUpdater
 
-version = "v0.0.3"
+version = "v1.0.0"
 
 print("\nchnhash " + version)
 print("Copyright (C) 2022-2023 Himashana Suraweera (https://chnsoftwaredevelopers.com)")
@@ -81,7 +81,15 @@ try:
         print("process - hash(" + file + ")")
         
         # Calling the generateHash() function to generate a hash value.
-        generateHash.generateHash(algorithm, file)
+        results = generateHash.generateHash(algorithm, file)
+
+        if results[0] != "":
+            print("Using: " + results[0])
+            print(results[0] + ": " + results[1], file)
+        else:
+            print("Sorry, an error occurred, or the algorithm is not supported with this tool. Please try to use a supported algorithm.")
+    else:
+        raise Exception()
 
 except: # If any exception occured,
     print("An unexpected error occurred!")

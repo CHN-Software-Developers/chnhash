@@ -19,36 +19,44 @@ You should have received a copy of the GNU General Public License along with chn
 import sys
 from filehash import FileHash
 
+# This function receives the hashing algorithm and the file to be hash as input parameters,
+# and returns a list that contains the usingAlgorithm and the fileHashValue.
 def generateHash(algorithm, file):
-    if algorithm == "sha1":
-        print("Using: SHA-1")
+    usingAlgorithm = ""
+    fileHashValue = ""
 
+    if algorithm == "sha1": # If the requested algorithm is SHA-1,
+        usingAlgorithm = "SHA-1"
+
+        # Using sha1.
         hasher = FileHash('sha1')
 
+        # Hashing the file.
         fileHashValue = hasher.hash_file(file)
+        # Replacing the whitespaces.
         fileHashValue = fileHashValue.replace(" ", "")
 
-        print("SHA-1: " + fileHashValue , file)
+    elif algorithm == "sha256": # If the requested algorithm is SHA-256,
+        usingAlgorithm = "SHA-256"
 
-    elif algorithm == "sha256":
-        print("Using: SHA-256")
-
+        # Using sha256.
         hasher = FileHash('sha256')
 
+        # Hashing the file.
         fileHashValue = hasher.hash_file(file)
+        # Replacing the whitespaces.
         fileHashValue = fileHashValue.replace(" ", "")
 
-        print("SHA-256: " + fileHashValue , file)
+    elif algorithm == "sha512": # If the requested algorithm is SHA-512,
+        usingAlgorithm = "SHA-512"
 
-    elif algorithm == "sha512":
-        print("Using: SHA-512")
-
+        # Using sha512.
         hasher = FileHash('sha512')
 
+        # Hashing the file.
         fileHashValue = hasher.hash_file(file)
+        # Replacing the whitespaces.
         fileHashValue = fileHashValue.replace(" ", "")
-
-        print("SHA-512: " + fileHashValue , file)
-    else:
-        print("Sorry, an error occurred, or the algorithm is not supported with this tool. Please try to use a supported algorithm.")
     
+    # Returning the usingAlgorithm and the fileHashValue from the function as a list.
+    return [usingAlgorithm, fileHashValue]
