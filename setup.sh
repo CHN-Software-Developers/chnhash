@@ -17,7 +17,7 @@ You should have received a copy of the GNU General Public License along with chn
 LICENSE
 
 echo ------------------------------------------------------------------------------------
-echo Copyright \(C\) 2022-2023 Himashana Suraweera \(https://chnsoftwaredevelopers.com)
+echo Copyright \(C\) 2022-2023 Himashana Suraweera \(https:\\\\\\\\chnsoftwaredevelopers.com\)
 echo Licensed under the terms of the GNU GPLv3
 echo ------------------------------------------------------------------------------------
 

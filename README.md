@@ -24,3 +24,13 @@ Generate a new hash value:
 
 Example:
 >chnhash.py -c sha512 test_files\File.txt test_files\received_hash.txt
+
+>chnhash.py -g sha512 test_files\File.txt
+
+## Supported algorithms:
+
+- sha1
+- sha256
+- sha512
+
+> Other algorithms will be available soon.
