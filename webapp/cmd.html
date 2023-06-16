@@ -1,0 +1,173 @@
+
+
+
+<html>
+<head>
+    <title>cmd</title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        .cmd {
+            width: 900px;
+            height: 500px;
+            background-color: black;
+            border: 3px solid white;
+            color: white;
+        }
+        .cmdInput{
+            width: 89%;
+            background-color: black;
+            color: white;
+            border:none;
+            resize:none
+        }
+
+        .textarea {
+            width: 900px;
+            height: 476px;
+            background-color: black;
+            color: white;
+            border:none;
+            resize:none
+        }
+
+        .hed {
+            background-color: white;
+            color: black;
+        }
+
+        .close {
+            color: black;
+            float: right;
+            font-weight: bold;
+            text-decoration: none;
+            width: 20px;
+            padding: 2px 2px;
+        }
+
+            .close:hover {
+                background-color: red;
+                color: white;
+            }
+
+        .screen {
+            width: 80%;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: green;
+            border-color: green;
+            width: 900px;
+            height: 500px;
+            color: white;
+            display: none;
+        }
+    </style>
+    <style>
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #3498db;
+            width: 120px;
+            height: 120px;
+            -webkit-animation: spin 2s linear infinite; /* Safari */
+            animation: spin 2s linear infinite;
+        }
+
+        /* Safari */
+        @-webkit-keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cmd">
+        <div class="hed">
+            /chnsoftwaredevelopers/cmd/cmd.exe<a href="https://chnsoftwaredevelopers.com/classroom/Whiteboard/Whiteboard%20App/" class="close">  &times;</a>
+        </div>
+        
+        <div style="height:96%; width:100%; overflow-y:auto;" id="cmdBody">
+
+            <div id="cmdOutput">== Terminal running at ./chnsoftwaredevelopers ==</div>
+            
+            <div id="cmdInputSection">
+                user@chnsd > <input type="text" onkeydown="pressed(event)" class="cmdInput" id="cmdInput">
+            </div>
+                
+        
+        </div>
+        
+        <!-- <form action="" method='post'>
+        <textarea onkeydown="pressed(event)" class="textarea" name="cmd" placeholder="CHN Software Developers&#13;&#10;----------------------------------------------------------------------&#13;&#10;$_ >"></textarea>
+        </form> -->
+        
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha1/0.6.0/sha1.min.js"></script>
+    
+    <script>
+        document.getElementById("cmdInput").focus();
+
+        function pressed(e) {
+            // Has the enter key been pressed?
+            if ( (window.event ? event.keyCode : e.which) == 13) { 
+                // If it has been so, manually submit the <form>
+                document.getElementById("cmdOutput").innerHTML = document.getElementById("cmdOutput").innerHTML + "<br>user@chnsd >" + document.getElementById("cmdInput").value;
+                
+                if(document.getElementById("cmdInput").value == "cd"){
+                    document.getElementById("cmdOutput").innerHTML = document.getElementById("cmdOutput").innerHTML + "<br>./chnsoftwaredevelopers/cmd";
+                }else if(document.getElementById("cmdInput").value == "ls"){
+                    document.getElementById("cmdOutput").innerHTML = document.getElementById("cmdOutput").innerHTML + "<br>/executor<br>/packages<br>/chnhash";
+                }else if(document.getElementById("cmdInput").value == "settings -colormode light"){
+                    document.getElementById("cmdOutput").style.backgroundColor = "white";
+                    document.getElementById("cmdOutput").style.color = "blue";
+                    document.getElementById("cmdInput").style.backgroundColor = "white";
+                    document.getElementById("cmdInput").style.color = "blue";
+                    document.getElementById("cmdBody").style.backgroundColor = "white";
+                    document.getElementById("cmdBody").style.color = "blue";
+                }else if(document.getElementById("cmdInput").value == "settings -colormode dark"){
+                    document.getElementById("cmdOutput").style.backgroundColor = "black";
+                    document.getElementById("cmdOutput").style.color = "white";
+                    document.getElementById("cmdInput").style.backgroundColor = "black";
+                    document.getElementById("cmdInput").style.color = "white";
+                    document.getElementById("cmdBody").style.backgroundColor = "black";
+                    document.getElementById("cmdBody").style.color = "white";
+                }else if(document.getElementById("cmdInput").value == "chnhash.py"){
+                    document.getElementById("cmdOutput").innerHTML = document.getElementById("cmdOutput").innerHTML + "<?php echo 'abcdef'; ?>";
+                }else if(document.getElementById("cmdInput").value == "clear"){
+                    document.getElementById("cmdOutput").innerHTML = "";
+                }else if(document.getElementById("cmdInput").value == "exit"){
+                    document.getElementById("cmdOutput").innerHTML = document.getElementById("cmdOutput").innerHTML + "<br>Terminal was closed.";
+                    document.getElementById("cmdInputSection").style.display = "none";
+                }else{
+                    document.getElementById("cmdOutput").innerHTML = document.getElementById("cmdOutput").innerHTML + "<br>Access denied. Can't execute this command.";
+                }
+
+                document.getElementById("cmdBody").scrollTop = document.getElementById("cmdBody").scrollHeight;
+                
+                document.getElementById("cmdInput").value = "";
+            }
+        }
+        
+    </script>
+</body>
+</html>
