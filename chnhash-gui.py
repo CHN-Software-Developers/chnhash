@@ -20,6 +20,7 @@ You should have received a copy of the GNU General Public License along with chn
 
 import tkinter, tkinter.messagebox
 from tkinter import ttk
+import time
 import compareHash
 import generateHash
 import appUpdater
@@ -66,7 +67,7 @@ class ProgramGUI:
         self.main.title('chnhash - GUI'), self.main.resizable(width=False, height=False)
         self.main.eval('tk::PlaceWindow . center')
 
-        self.appVersion = "v1.0.0"
+        self.appVersion = "v0.1.0"
         self.results = ""
 
         self.header = tkinter.Frame(self.main, pady=10, padx=60)
@@ -104,6 +105,8 @@ class ProgramGUI:
 
         self.appTitle.config(text = "chnhash - " + self.appVersion)
 
+        self.checkForUpdates()
+
         tkinter.mainloop()
 
     def generateHashBtn_onClick(self):
@@ -124,6 +127,20 @@ class ProgramGUI:
 
         self.resultsText.config(state='disabled')
 
+    def checkForUpdates(self):
+        # Calling the isUpdateAvailable() function to check for updates by passing the current app version as the parameter.
+        updateDetails = appUpdater.isUpdateAvailable(self.appVersion)
+
+        if(updateDetails[0] == True): # If an update available,
+            self.resultsText.config(state='normal')
+            self.resultsText.insert(tkinter.END,"A new update is available. Please run the following commands to update this tool to the latest version.\n")
+            self.resultsText.insert(tkinter.END,"\nStep 1:\nwget https://github.com/CHN-Software-Developers/chnhash/archive/refs/tags/" + updateDetails[1] + ".zip\n")
+            self.resultsText.insert(tkinter.END,"or download the zip file manually via the above link.\n")
+            self.resultsText.insert(tkinter.END,"\nStep 2:\nUnzip the downloaded zip file and run the setup.sh file to perform the installation.\n")
+            self.resultsText.insert(tkinter.END,"sudo sh setup.sh\n")
+            self.resultsText.config(state='disabled')
+
+    
 loadingScreen = LoadingScreen()
 
 if loadingScreen.timer.get() < 1:
